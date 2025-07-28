@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="./imagen.png">
+
+<meta name="theme-color" content="#4a90e2">
+
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gestor de Tareas</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Gestor de Tareas</h1>
+      <button id="toggle-theme">🌓</button>
+    </div>
+
+    <!-- FORMULARIO -->
+    <form id="task-form">
+      <input type="text" id="task-input" placeholder="Nueva tarea..." required />
+      
+      <select id="task-priority">
+        <option value="alta">Alta</option>
+        <option value="media" selected>Media</option>
+        <option value="baja">Baja</option>
+      </select>
+
+      <input type="date" id="task-date" />
+
+      <button type="submit">Agregar</button>
+    </form>
+
+    <!-- FILTROS -->
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">Todas</button>
+      <button class="filter-btn" data-filter="completed">Completadas</button>
+      <button class="filter-btn" data-filter="pending">Pendientes</button>
+
+      <label for="orden">Ordenar por:</label>
+<select id="orden">
+  <option value="fecha">Fecha de creación</option>
+  <option value="prioridad">Prioridad</option>
+  <option value="vencimiento">Fecha de vencimiento</option>
+</select>
+    </div>
+
+    <!-- BUSCA TARREA -->
+    <div class="search-container">
+    <input type="text" id="search-task" placeholder="🔍 
+    Buscar tarea..." />
+    </div>
+
+    <!-- LISTA -->
+    <ul id="task-list"></ul>
+
+    <!-- CONTADOR -->
+    <div id="task-counter">
+  Pendientes: <span id="pending-count">0</span> |
+  Completadas: <span id="completed-count">0</span>
+    </div>
+
+    
+  </div>
+
+  <script src="script.js"></script>
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js");
+  }
+</script>
+
+<button class="fab" id="fab-btn">+</button>
+</body>
+  
+</html>
+
